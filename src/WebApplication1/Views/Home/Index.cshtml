@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-primary">Post</button>
+    </div>
+</div>
+
+@section scripts {
+
+    <script>
+        $("button").on('click', () => {
+
+
+            var dados = {
+                totalVeiculos: 2,
+                veiculos: [
+                    {
+                        placa: "NFJ1058",
+                        cor: "Prata"
+                    },
+                    {
+                        placa: "XRT1015",
+                        cilindradas: "1000"
+                    }
+                ]
+            };
+
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/Salvar",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(dados),
+                success: (d) => alert(d.result),
+                error: (e) => alert('Erro')
+            });
+
+
+
+        });
+    </script>
+
+}
